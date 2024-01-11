@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+  background-color: var(--header-background-color);
+}
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  width: 90%;
+}
+
+.logoContainer {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.tabBarContainer {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}

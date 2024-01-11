@@ -1,0 +1,43 @@
+.authContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  top: 150px;
+  width: 430px;
+  height: 380px;
+  border-radius: 10px;
+  background-color: var(--header-background-color);
+}
+
+.linkRegistration {
+  display: flex;
+  gap: 5px;
+}
+
+.linkRegistration a {
+  color: var(--thematic-color);
+}
+
+.textContainer h2 {
+  margin-top: 15px;
+}
+.textContainer h2 span {
+  color: var(--thematic-color);
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

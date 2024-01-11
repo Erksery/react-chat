@@ -1,0 +1,40 @@
+.allert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  margin: auto;
+  padding: 15px;
+  transform: translateY(20px);
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  max-width: 350px;
+  height: 30px;
+  border: solid 2px var(--header-background-color);
+  border-radius: 10px;
+  background-color: var(--header-background-color);
+  transition: 0.25s;
+}
+
+.allert.entering {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.allert.entered {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.allert.exiting {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.allert.exited {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
