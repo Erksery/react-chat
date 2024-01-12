@@ -1,21 +1,33 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import styles from "./Messages.module.scss";
 import axios from "axios";
 
 function Messages({ selectUserId, history, userData }) {
+  const messageContainer = useRef();
+
+  useEffect(() => {
+    if (messageContainer.current) {
+      messageContainer.current.scrollTop =
+        messageContainer.current.scrollHeight;
+    }
+  }, [history]);
+
   if (!selectUserId) {
     return (
       <div className={styles.messages}>
-        <p>Выберите пользователя</p>
+        <div className={styles.board}>
+          <p>Выберите пользователя</p>
+        </div>
       </div>
     );
   }
   return (
-    <div className={styles.messages}>
+    <div ref={messageContainer} className={styles.messages}>
       {!!selectUserId &&
         history &&
         history.map((message, index) => (
           <div
+            key={message.index}
             style={{
               justifyContent:
                 userData.userId === message.sender ? "flex-end" : "flex-start",

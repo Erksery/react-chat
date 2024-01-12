@@ -21,15 +21,16 @@ function ChatPage() {
   const ws = new WebSocket("ws://localhost:5007");
 
   useEffect(() => {
-    ws.onopen = (e) => {
-      const data = JSON.parse(e.data);
-      console.log("WebSocket connection opened" + data + e);
+    ws.onopen = () => {
+      console.log("WebSocket connection opened");
     };
     ws.onmessage = (e) => {
       const data = JSON.parse(e.data);
       if ("message" in data) {
         console.log(JSON.parse(e.data));
         setHistory((prev) => [...prev, { ...data.message }]);
+      } else {
+        console.log(data);
       }
     };
 
@@ -44,7 +45,7 @@ function ChatPage() {
     return () => {
       ws.close();
     };
-  }, []);
+  }, [userData]);
 
   const message = (e) => {
     e.preventDefault();

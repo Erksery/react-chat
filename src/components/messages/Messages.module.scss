@@ -4,7 +4,7 @@
   flex-direction: column;
   padding-bottom: 10px;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .messageContainer {
@@ -16,7 +16,15 @@
   align-items: flex-start;
   justify-content: flex-start;
   max-width: 300px;
-
   padding: 10px 20px;
   border-radius: 10px;
+  transition: 0.2s;
+}
+
+.board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 100%;
 }
