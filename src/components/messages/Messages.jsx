@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef } from "react";
 import styles from "./Messages.module.scss";
 import axios from "axios";
 
-function Messages({ selectUserId, history, userData }) {
+function Messages({ selectUserId, history, userData, loadingHistory }) {
   const messageContainer = useRef();
 
   useEffect(() => {
@@ -11,6 +11,16 @@ function Messages({ selectUserId, history, userData }) {
         messageContainer.current.scrollHeight;
     }
   }, [history]);
+
+  if (loadingHistory) {
+    return (
+      <div className={styles.messages}>
+        <div className={styles.board}>
+          <p>Загрузка сообщений</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!selectUserId) {
     return (
@@ -21,10 +31,20 @@ function Messages({ selectUserId, history, userData }) {
       </div>
     );
   }
+
+  if (history.length === 0) {
+    return (
+      <div className={styles.messages}>
+        <div className={styles.board}>
+          <p>Напишите пользователю</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div ref={messageContainer} className={styles.messages}>
       {!!selectUserId &&
-        history &&
         history.map((message, index) => (
           <div
             key={message.index}

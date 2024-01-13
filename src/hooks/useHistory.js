@@ -23,6 +23,7 @@ export const useHistory = (selectUserId) => {
           })
         );
       } finally {
+        console.log("Загрузка завершена");
         setLoadingHistory(false);
       }
     }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import BodyContainer from "../../components/bodyContainer/BodyContainer";
 import Error from "../../components/error/Error";
@@ -13,6 +13,7 @@ function ChatPage() {
   const [searchValue, setSearchValue] = useState("");
   const [messageInputValue, setMassageInputValue] = useState("");
   const [usersList, setUsersList] = useState([]);
+  const [onlineUsers, setOnlineUsers] = useState([]);
   const [searchLoading, setSearchLoading] = useState(true);
   const [selectUserId, setSelectUserId] = useState(null);
   const { userData, loading } = useAuth();
@@ -29,8 +30,9 @@ function ChatPage() {
       if ("message" in data) {
         console.log(JSON.parse(e.data));
         setHistory((prev) => [...prev, { ...data.message }]);
-      } else {
+      } else if ("onlineUsers" in data) {
         console.log(data);
+        //setOnlineUsers(data.onlineUsers);
       }
     };
 
@@ -45,7 +47,7 @@ function ChatPage() {
     return () => {
       ws.close();
     };
-  }, [userData]);
+  }, []);
 
   const message = (e) => {
     e.preventDefault();
@@ -110,7 +112,7 @@ function ChatPage() {
                   key={user._id}
                   className={styles.userCard}
                 >
-                  {user && <Avatar id={user._id} loginUser={user.loginUser} />}
+                  {user && <Avatar user={user} />}
 
                   <span className={styles.userName}>{user.loginUser}</span>
                 </div>
@@ -125,8 +127,10 @@ function ChatPage() {
         <div className={styles.chat}>
           <div className={styles.chatHeader}>
             {selectUserId && <h2>Чат с {select[0].loginUser}</h2>}
+            <p>{loadingHistory && "Обновление..."}</p>
           </div>
           <Messages
+            loadingHistory={loadingHistory}
             selectUserId={selectUserId}
             history={history}
             userData={userData}
