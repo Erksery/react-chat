@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Icon36Send } from "@vkontakte/icons";
 import styles from "./SendInput.module.scss";
+import { useWsConnection } from "../../hooks/useWsConnection";
 
-function SendInput({ ws, userData, selectUserId }) {
+function SendInput({ userData, selectUserId }) {
   const [messageInputValue, setMessageInputValue] = useState("");
+  const { ws } = useWsConnection();
 
   const message = (e) => {
     e.preventDefault();
+
     ws.send(
       JSON.stringify({
         message: {
@@ -16,6 +19,7 @@ function SendInput({ ws, userData, selectUserId }) {
         },
       })
     );
+    setMessageInputValue("");
   };
   return (
     <form onSubmit={message} className={styles.chatInput}>

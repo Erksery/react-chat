@@ -1,4 +1,5 @@
 .avatar {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,4 +8,15 @@
   border-radius: 100%;
   font-weight: 500;
   font-size: 18px;
+}
+
+.onlineIndicator {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  //background-color: rgb(255, 90, 90);
+  border: solid 1px var(--element-background-color);
 }

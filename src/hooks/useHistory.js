@@ -7,7 +7,9 @@ export const useHistory = (selectUserId) => {
   const [history, setHistory] = useState([]);
   const [loadingHistory, setLoadingHistory] = useState(true);
   const dispatch = useDispatch();
+
   useEffect(() => {
+    setHistory([]);
     async function getHistory() {
       try {
         const resData = await axios.get("/api/history", {

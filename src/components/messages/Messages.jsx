@@ -1,8 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import styles from "./Messages.module.scss";
-import axios from "axios";
 
-function Messages({ selectUserId, history, userData, loadingHistory }) {
+function Messages({ selectUserId, history, userData }) {
   const messageContainer = useRef();
 
   useEffect(() => {
@@ -11,16 +10,6 @@ function Messages({ selectUserId, history, userData, loadingHistory }) {
         messageContainer.current.scrollHeight;
     }
   }, [history]);
-
-  if (loadingHistory) {
-    return (
-      <div className={styles.messages}>
-        <div className={styles.board}>
-          <p>Загрузка сообщений</p>
-        </div>
-      </div>
-    );
-  }
 
   if (!selectUserId) {
     return (
@@ -36,7 +25,7 @@ function Messages({ selectUserId, history, userData, loadingHistory }) {
     return (
       <div className={styles.messages}>
         <div className={styles.board}>
-          <p>Напишите пользователю</p>
+          <p>Загрузка...</p>
         </div>
       </div>
     );
