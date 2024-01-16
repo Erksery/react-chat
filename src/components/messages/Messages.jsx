@@ -47,7 +47,7 @@ function Messages({ selectUserId, history, userData, loadingHistory }) {
       {!!selectUserId &&
         history.map((message, index) => (
           <div
-            key={message.index}
+            key={message._id ? message._id : index}
             style={{
               justifyContent:
                 userData.userId === message.sender ? "flex-end" : "flex-start",

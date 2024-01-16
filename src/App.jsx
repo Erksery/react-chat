@@ -1,6 +1,6 @@
 import React from "react";
-import Routers from "./components/Routers/Routers";
 import Allert from "./components/allert/Allert";
+import Routers from "./Routers/Routers";
 
 function App() {
   return (

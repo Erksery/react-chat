@@ -1,0 +1,11 @@
+.chatInput {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.chatInput input {
+  width: 100%;
+}

@@ -1,0 +1,65 @@
+.userList {
+  display: flex;
+  flex-direction: column;
+  padding-right: 10px;
+  width: 300px;
+  gap: 10px;
+  border-right: solid 1px gray;
+  box-shadow: none;
+}
+
+.userList input {
+  height: 10px;
+}
+
+.notUsers {
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+  width: 100%;
+}
+
+.notUsers p {
+  text-align: center;
+}
+
+.userScroll {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+}
+
+.userScroll::-webkit-scrollbar {
+  width: 0px;
+}
+
+.line {
+  width: 100%;
+  border-color: var(--sub-element-background-color);
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--element-background-color);
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.userCard:hover {
+  background-color: var(--button-hover-background-color);
+}
+
+.userName {
+  display: -webkit-box;
+  width: 70%;
+  word-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
