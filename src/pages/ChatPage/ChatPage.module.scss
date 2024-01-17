@@ -22,11 +22,20 @@
 
 .chatHeader {
   display: flex;
-  align-items: center;
+  justify-content: center;
   flex-direction: column;
+  padding: 5px;
   height: 50px;
 }
 
-.chatHeader h2 {
-  font-size: 20px;
+.chatHeader p {
+  font-size: 17px;
+  font-weight: 500;
+  color: white;
+}
+
+.selectUser {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

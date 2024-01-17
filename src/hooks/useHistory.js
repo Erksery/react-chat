@@ -1,19 +1,25 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addAllert } from "../store/allertSlice";
 
-export const useHistory = (selectUserId) => {
+export const useHistory = ({ selectUserId }) => {
   const [history, setHistory] = useState([]);
   const [loadingHistory, setLoadingHistory] = useState(true);
+
   const dispatch = useDispatch();
 
+  const messagesLimit = useSelector(
+    (state) => state.limitMessagesStore.messagesLimit
+  );
+
   useEffect(() => {
+    console.log(messagesLimit);
     setHistory([]);
     async function getHistory() {
       try {
         const resData = await axios.get("/api/history", {
-          params: { selectChatId: selectUserId },
+          params: { selectChatId: selectUserId, messagesLimit: messagesLimit },
         });
         setHistory(resData.data);
       } catch (err) {
@@ -30,6 +36,6 @@ export const useHistory = (selectUserId) => {
       }
     }
     getHistory();
-  }, [selectUserId]);
+  }, [selectUserId, messagesLimit]);
   return { history, setHistory, loadingHistory };
 };

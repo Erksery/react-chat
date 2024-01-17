@@ -4,7 +4,13 @@ import styles from "./UserList.module.scss";
 import Avatar from "../avatar/Avatar";
 import { useSelector } from "react-redux";
 
-function UserList({ selectUserId, setSelectUserId, usersList, setUsersList }) {
+function UserList({
+  selectUserId,
+  setSelectUserId,
+  usersList,
+  setUsersList,
+  userData,
+}) {
   const [searchValue, setSearchValue] = useState("");
   const [searchLoading, setSearchLoading] = useState(true);
 
@@ -18,8 +24,9 @@ function UserList({ selectUserId, setSelectUserId, usersList, setUsersList }) {
   }, [searchValue]);
 
   async function getSearchUsers() {
+    console.log(userData.userId);
     const resData = await axios.get("/api/searchUser", {
-      params: { searchValue: searchValue },
+      params: { searchValue: searchValue, userId: userData.userId },
     });
     try {
       setUsersList(resData.data);

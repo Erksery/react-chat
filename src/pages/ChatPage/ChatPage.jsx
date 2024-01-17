@@ -8,13 +8,22 @@ import Messages from "../../components/messages/Messages";
 import SendInput from "../../components/sendInput/SendInput";
 import UserList from "../../components/userList/UserList";
 import { useWsConnection } from "../../hooks/useWsConnection";
+import { useDispatch, useSelector } from "react-redux";
+import { setMessagesLimit } from "../../store/limitMessagesSlice";
+import Avatar from "../../components/avatar/Avatar";
 
 function ChatPage() {
   const [usersList, setUsersList] = useState([]);
   const [selectUserId, setSelectUserId] = useState(null);
   const [selectUserData, setSelectUserData] = useState({});
+
+  const dispatch = useDispatch();
+  const online = useSelector((state) => state.onlineUsersStore);
+
   const { userData, loading } = useAuth();
-  const { history, setHistory, loadingHistory } = useHistory(selectUserId);
+  const { history, setHistory, loadingHistory } = useHistory({
+    selectUserId,
+  });
   const { ws } = useWsConnection();
 
   useEffect(() => {
@@ -50,18 +59,31 @@ function ChatPage() {
           setSelectUserId={setSelectUserId}
           usersList={usersList}
           setUsersList={setUsersList}
+          userData={userData}
         />
         <div className={styles.chat}>
-          <div className={styles.chatHeader}>
-            {selectUserId && <h2>Чат с {selectUserData.loginUser}</h2>}
+          <div
+            onClick={() => dispatch(setMessagesLimit())}
+            className={styles.chatHeader}
+          >
+            {selectUserId && userData && (
+              <div className={styles.selectUser}>
+                <Avatar
+                  user={selectUserData}
+                  onlineUsers={online.onlineUsers}
+                />
+                <p>Чат с {selectUserData.loginUser}</p>
+              </div>
+            )}
             <p>{loadingHistory && "Обновление..."}</p>
           </div>
           <Messages
+            history={history}
             loadingHistory={loadingHistory}
             selectUserId={selectUserId}
-            history={history}
             userData={userData}
           />
+
           {!!selectUserId && (
             <SendInput userData={userData} selectUserId={selectUserId} />
           )}

@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.3",
     "@reduxjs/toolkit": "^2.0.1",
     "@vkontakte/icons": "^2.90.0",
     "axios": "^1.6.3",

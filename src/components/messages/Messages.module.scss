@@ -3,7 +3,7 @@
   display: flex;
   gap: 15px;
   flex-direction: column;
-  padding-bottom: 10px;
+  width: calc(100% + 5px);
   height: 100%;
   overflow-y: auto;
 }
@@ -16,8 +16,9 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  gap: 10px;
   max-width: 300px;
-  padding: 10px 20px;
+  padding: 10px 10px 3px 10px;
   border-radius: 10px;
   transition: 0.2s;
 }
@@ -28,4 +29,35 @@
   justify-content: center;
   width: auto;
   height: 100%;
+}
+
+.bottomTrigger {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10000px;
+  height: 10px;
+  background-color: black;
+}
+
+.messages::-webkit-scrollbar {
+  width: 5px;
+}
+
+.messageDate {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.messageDate p {
+  font-size: 11px;
+  color: white;
+}
+
+.messageText {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-bottom: 17px;
 }

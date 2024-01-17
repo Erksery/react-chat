@@ -1,22 +1,46 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styles from "./Messages.module.scss";
+import { useScrollTrigger } from "../../hooks/useScrollTrigger";
+import { useHistory } from "../../hooks/useHistory";
+import { useGetMoreMessages } from "../../hooks/useGetMoreMessages";
+import { useSpring, animated, useSpringRef } from "@react-spring/web";
+import { Icon28PinDotSlashOutline } from "@vkontakte/icons";
 
 function Messages({ selectUserId, history, userData }) {
   const messageContainer = useRef();
 
+  const springs = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+  });
+
+  const messageSprings = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+  });
+
+  const { visible, scrollTrigger } = useScrollTrigger({ history });
+
   useEffect(() => {
     if (messageContainer.current) {
-      messageContainer.current.scrollTop =
-        messageContainer.current.scrollHeight;
+      scrollBottom();
     }
   }, [history]);
+
+  function scrollBottom() {
+    messageContainer.current.scrollTop = messageContainer.current.scrollHeight;
+  }
+
+  function formatingMessageDate(date) {
+    return date ? date.split(", ")[1] : "Только что";
+  }
 
   if (!selectUserId) {
     return (
       <div className={styles.messages}>
-        <div className={styles.board}>
+        <animated.div style={springs} className={styles.board}>
           <p>Выберите пользователя</p>
-        </div>
+        </animated.div>
       </div>
     );
   }
@@ -51,10 +75,14 @@ function Messages({ selectUserId, history, userData }) {
               key={index}
               className={styles.message}
             >
-              {message.text}
+              <span className={styles.messageDate}>
+                <p>{formatingMessageDate(message.date)}</p>
+              </span>
+              <span className={styles.messageText}>{message.text}</span>
             </div>
           </div>
         ))}
+      <div ref={scrollTrigger} />
     </div>
   );
 }
