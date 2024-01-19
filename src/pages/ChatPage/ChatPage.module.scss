@@ -1,3 +1,7 @@
+body {
+  overflow-y: hidden;
+}
+
 .chatContainer {
   position: absolute;
   display: flex;
@@ -24,7 +28,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 5px;
+  padding: 5px 0;
   height: 50px;
 }
 
@@ -38,4 +42,18 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.boardContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+@media screen and (max-width: 500px) {
+  .chatContainer {
+    width: 95%;
+    top: 0;
+  }
 }

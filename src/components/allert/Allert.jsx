@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Transition } from "react-transition-group";
@@ -9,6 +9,7 @@ export default function Allert() {
   const dispatch = useDispatch();
   const allert = useSelector((state) => state.allertStore);
   const [allertModal, setAllertModal] = useState(false);
+  const allertRef = useRef(null);
 
   useEffect(() => {
     if (allert) {
@@ -24,13 +25,30 @@ export default function Allert() {
     }
   }, [allert]);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (allertRef.current && !allertRef.current.contains(event.target)) {
+        setAllertModal(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
     <Transition in={allertModal} timeout={500}>
       {(allertModal) => (
         <div
+          ref={allertRef}
           className={`allert ${allertModal}`}
           style={{
-            borderColor: allert.allertStatus === 200 ? "#009933" : "#CC0033",
+            borderColor:
+              allert.allertStatus === 200
+                ? "rgb(114, 255, 114)"
+                : "rgb(255, 109, 109)",
           }}
         >
           {allert.allertText ? allert.allertText : "Неизвестная ошибка"}

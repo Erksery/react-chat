@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import AuthPage from "../pages/AuthPage/AuthPage";
 import RegPage from "../pages/RegPage/RegPage";
 import ChatPage from "../pages/ChatPage/ChatPage";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export default function Routers() {
   return (
@@ -11,6 +12,7 @@ export default function Routers() {
       <Route path="/reg" element={<RegPage />} />
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/chat" element={<ChatPage />} />
+      <Route path="/error" element={<ErrorPage />} />
     </Routes>
   );
 }

@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 
-export const useScrollTrigger = ({ history }) => {
+export const useScrollTrigger = (history) => {
   const [visible, setVisible] = useState(false);
   const scrollTrigger = useRef();
 
@@ -9,6 +9,7 @@ export const useScrollTrigger = ({ history }) => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
+          console.log("visible");
         } else setVisible(false);
       },
       {

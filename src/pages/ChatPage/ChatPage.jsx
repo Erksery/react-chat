@@ -69,23 +69,35 @@ function ChatPage() {
             {selectUserId && userData && (
               <div className={styles.selectUser}>
                 <Avatar
-                  user={selectUserData}
+                  id={selectUserData._id}
+                  login={selectUserData.loginUser}
+                  color={selectUserData.avatarColor}
                   onlineUsers={online.onlineUsers}
                 />
-                <p>Чат с {selectUserData.loginUser}</p>
+                <p>{selectUserData.loginUser}</p>
               </div>
             )}
             <p>{loadingHistory && "Обновление..."}</p>
           </div>
-          <Messages
-            history={history}
-            loadingHistory={loadingHistory}
-            selectUserId={selectUserId}
-            userData={userData}
-          />
 
-          {!!selectUserId && (
-            <SendInput userData={userData} selectUserId={selectUserId} />
+          {!!selectUserId ? (
+            <>
+              <Messages
+                history={history}
+                loadingHistory={loadingHistory}
+                selectUserId={selectUserId}
+                userData={userData}
+              />
+              <SendInput
+                userData={userData}
+                selectUserId={selectUserId}
+                selectUserData={selectUserData}
+              />
+            </>
+          ) : (
+            <div className={styles.boardContainer}>
+              <p>Выберите пользователя</p>
+            </div>
           )}
         </div>
       </div>
@@ -93,4 +105,4 @@ function ChatPage() {
   );
 }
 
-export default React.memo(ChatPage);
+export default ChatPage;

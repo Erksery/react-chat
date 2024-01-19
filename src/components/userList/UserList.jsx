@@ -24,7 +24,6 @@ function UserList({
   }, [searchValue]);
 
   async function getSearchUsers() {
-    console.log(userData.userId);
     const resData = await axios.get("/api/searchUser", {
       params: { searchValue: searchValue, userId: userData.userId },
     });
@@ -61,7 +60,12 @@ function UserList({
                 className={styles.userCard}
               >
                 {user && (
-                  <Avatar user={user} onlineUsers={online.onlineUsers} />
+                  <Avatar
+                    id={user._id}
+                    login={user.loginUser}
+                    color={user.avatarColor}
+                    onlineUsers={online.onlineUsers}
+                  />
                 )}
 
                 <span className={styles.userName}>{user.loginUser}</span>

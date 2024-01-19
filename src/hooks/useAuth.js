@@ -12,10 +12,12 @@ export const useAuth = () => {
 
   useEffect(() => {
     async function getUserData() {
-      const resData = await axios
-        .get("/api/profile")
-        .catch((err) => console.log(err));
       try {
+        const resData = await axios.get("/api/profile").catch((err) => {
+          if (err.response.status === 500) {
+            navigate("/error");
+          }
+        });
         setUserData(resData.data);
 
         dispatch(
@@ -25,14 +27,13 @@ export const useAuth = () => {
           })
         );
       } catch (err) {
-        // navigate("/auth");
-        dispatch(
-          addAllert({
-            allertText: err.response.data.error,
-            allertStatus: err.response.status,
-          })
-        );
-        console.log("ERROR");
+        err.response &&
+          dispatch(
+            addAllert({
+              allertText: err.response.data.error,
+              allertStatus: err.response.status,
+            })
+          );
       } finally {
         setLoading(false);
       }

@@ -3,24 +3,11 @@
   display: flex;
   gap: 15px;
   flex-direction: column;
+  padding-right: 5px;
   width: calc(100% + 5px);
   height: 100%;
   overflow-y: auto;
-}
-
-.messageContainer {
-  display: flex;
-}
-
-.message {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 10px;
-  max-width: 300px;
-  padding: 10px 10px 3px 10px;
-  border-radius: 10px;
-  transition: 0.2s;
+  overflow-x: hidden;
 }
 
 .board {
@@ -59,5 +46,11 @@
   display: flex;
   align-items: center;
   height: 100%;
-  margin-bottom: 17px;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: gray;
 }

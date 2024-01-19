@@ -1,19 +1,16 @@
 import React from "react";
 import styles from "./Avatar.module.scss";
 
-function Avatar({ user, onlineUsers }) {
+function Avatar({ id, login, color, onlineUsers }) {
   return (
     <>
-      {user && (
-        <div
-          style={{ backgroundColor: user.avatarColor }}
-          className={styles.avatar}
-        >
-          {user.loginUser && user.loginUser[0]}
+      {id && (
+        <div style={{ backgroundColor: color }} className={styles.avatar}>
+          {login && login[0]}
 
           <div
             style={{
-              backgroundColor: onlineUsers.includes(user._id)
+              backgroundColor: onlineUsers.includes(id)
                 ? "rgb(114, 255, 114)"
                 : "rgb(255, 109, 109)",
             }}

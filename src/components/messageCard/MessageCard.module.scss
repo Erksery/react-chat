@@ -1,0 +1,43 @@
+.messageContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  max-width: 300px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.messageText {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.userAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  background-color: gray;
+  font-weight: 500;
+  font-size: 17px;
+  user-select: none;
+}
+
+.date {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  font-size: 12px;
+  user-select: none;
+}

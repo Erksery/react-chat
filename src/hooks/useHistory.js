@@ -14,7 +14,6 @@ export const useHistory = ({ selectUserId }) => {
   );
 
   useEffect(() => {
-    console.log(messagesLimit);
     setHistory([]);
     async function getHistory() {
       try {
@@ -24,14 +23,15 @@ export const useHistory = ({ selectUserId }) => {
         setHistory(resData.data);
       } catch (err) {
         setHistory([]);
-        dispatch(
-          addAllert({
-            allertText: err.response.data.error,
-            allertStatus: err.response.status,
-          })
-        );
+        err.response &&
+          dispatch(
+            addAllert({
+              allertText: err.response.data.error,
+              allertStatus: err.response.status,
+            })
+          );
       } finally {
-        console.log("Загрузка завершена");
+        //console.log("Загрузка завершена");
         setLoadingHistory(false);
       }
     }

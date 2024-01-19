@@ -1,9 +1,11 @@
 import { useLayoutEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addOnlineUsers } from "../store/onlineUsersSlice";
+import { useNavigate } from "react-router-dom";
 
 export const useWsConnection = () => {
   const [ws, setWs] = useState({});
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useLayoutEffect(() => {
@@ -19,7 +21,7 @@ export const useWsConnection = () => {
     };
 
     wss.onerror = (error) => {
-      console.error("WebSocket error:", error);
+      navigate("/error");
     };
 
     wss.onclose = () => {
