@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const useAuth = () => {
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(true);
+  const [errorAuth, setErrorAuth] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -15,7 +16,7 @@ export const useAuth = () => {
       try {
         const resData = await axios.get("/api/profile").catch((err) => {
           if (err.response.status === 500) {
-            navigate("/error");
+            setErrorAuth("Ошибка при получении данных профиля");
           }
         });
         setUserData(resData.data);
@@ -42,5 +43,5 @@ export const useAuth = () => {
     getUserData();
   }, []);
 
-  return { userData, loading };
+  return { userData, loading, errorAuth };
 };

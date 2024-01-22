@@ -21,7 +21,7 @@ export const useWsConnection = () => {
     };
 
     wss.onerror = (error) => {
-      navigate("/error");
+      //navigate("/error");
     };
 
     wss.onclose = () => {

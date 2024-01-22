@@ -54,7 +54,7 @@ function UserList({
               <div
                 onClick={() => setSelectUserId(user._id)}
                 style={{
-                  backgroundColor: user._id === selectUserId ? "#383b43" : "",
+                  backgroundColor: user._id === selectUserId ? "#333c4d" : "",
                 }}
                 key={user._id}
                 className={styles.userCard}

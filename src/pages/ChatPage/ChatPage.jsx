@@ -20,7 +20,7 @@ function ChatPage() {
   const dispatch = useDispatch();
   const online = useSelector((state) => state.onlineUsersStore);
 
-  const { userData, loading } = useAuth();
+  const { userData, loading, errorAuth } = useAuth();
   const { history, setHistory, loadingHistory } = useHistory({
     selectUserId,
   });
@@ -49,6 +49,14 @@ function ChatPage() {
 
   if (!userData.userLogin && !loading) {
     return <Error />;
+  }
+
+  if (errorAuth) {
+    return (
+      <div>
+        <h1>{errorAuth}</h1>
+      </div>
+    );
   }
 
   return (

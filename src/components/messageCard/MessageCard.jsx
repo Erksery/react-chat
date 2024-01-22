@@ -2,8 +2,10 @@ import React from "react";
 import styles from "./MessageCard.module.scss";
 import SenderMessage from "./SenderMessage";
 import RecipientMessage from "./RecipientMessage";
+import { Link } from "react-router-dom";
+import Image from "../image/Image";
 
-function MessageCard({ message, userData }) {
+function MessageCard({ message, userData, imageRef }) {
   function formatingMessageDate(date) {
     if (date) {
       return checkDate(date);
@@ -22,6 +24,27 @@ function MessageCard({ message, userData }) {
     return `${hours}:${minutes}`;
   }
 
+  function validateFile(file) {
+    if (file) {
+      if (file.type === "image/jpeg" || file.type === "image/png") {
+        return (
+          <div className={styles.messageImage}>
+            <Image file={file} imageRef={imageRef} />
+          </div>
+        );
+      } else {
+        return (
+          <Link
+            className={styles.messageFile}
+            to={`http://localhost:5007/uploads/${file.fileName}`}
+          >
+            {file.originalName}
+          </Link>
+        );
+      }
+    }
+  }
+
   return (
     <div
       style={{
@@ -34,11 +57,13 @@ function MessageCard({ message, userData }) {
         <SenderMessage
           message={message}
           formatingMessageDate={formatingMessageDate}
+          validateFile={validateFile}
         />
       ) : (
         <RecipientMessage
           message={message}
           formatingMessageDate={formatingMessageDate}
+          validateFile={validateFile}
         />
       )}
     </div>

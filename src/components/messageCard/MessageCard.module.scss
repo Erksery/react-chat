@@ -6,19 +6,32 @@
 
 .message {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 10px;
   max-width: 300px;
-  padding: 10px 15px;
   border-radius: 10px;
   transition: 0.2s;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .messageText {
   display: flex;
   align-items: center;
+  word-break: break-all;
   height: 100%;
+  margin: 10px 15px;
+}
+
+.textContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .userAvatar {
@@ -40,4 +53,22 @@
   height: 100%;
   font-size: 12px;
   user-select: none;
+}
+
+.messageImage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.messageFile {
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  background-color: rgba(240, 248, 255, 0.177);
+}
+
+.messageFile:hover {
+  color: white;
+  background-color: rgba(240, 248, 255, 0.336);
 }

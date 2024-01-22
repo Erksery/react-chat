@@ -1,4 +1,5 @@
 .chatInput {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -24,4 +25,57 @@
 .fileUploadButton:hover {
   background-color: var(--button-hover-background-color);
   cursor: pointer;
+}
+
+.secureFileContainer {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  padding: 10px;
+  top: -125px;
+  width: 350px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: var(--element-background-color);
+}
+
+.clearSecure {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 350px;
+}
+
+.secureFileImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+  padding: 10px;
+  border-radius: 15px;
+  border: solid 1px var(--sub-text-color);
+}
+
+.secureFileImage img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.imageData label {
+  display: -webkit-box;
+  width: 250px;
+  word-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
 }

@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./MessageCard.module.scss";
+import { Link } from "react-router-dom";
 
-function RecipientMessage({ message, formatingMessageDate }) {
+function RecipientMessage({ message, formatingMessageDate, validateFile }) {
   return (
     <>
       {message.senderData && (
@@ -15,10 +16,11 @@ function RecipientMessage({ message, formatingMessageDate }) {
 
       <div
         style={{
-          backgroundColor: "#4C4F56",
+          backgroundColor: "#3e495d",
         }}
         className={styles.message}
       >
+        {validateFile(message.file)}
         <span className={styles.messageText}>{message.text}</span>
       </div>
       <div className={styles.date}>{formatingMessageDate(message.date)}</div>

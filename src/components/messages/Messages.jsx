@@ -5,16 +5,31 @@ import MessageCard from "../messageCard/MessageCard";
 
 function Messages({ selectUserId, history, loadingHistory, userData }) {
   const messageContainer = useRef();
-  const triggerTest = useRef();
+  const scrollTrigger = useRef();
+  const imageRef = useRef();
 
-  useEffect(() => {
-    if (triggerTest.current) {
-      triggerTest.current.scrollIntoView({
+  const hancleScrollIntoView = () => {
+    if (scrollTrigger.current) {
+      scrollTrigger.current.scrollIntoView({
         block: "center",
         behavior: "smooth",
       });
     }
-  }, [history]);
+  };
+
+  useEffect(() => {
+    //hancleScrollIntoView();
+    if (imageRef.current) {
+      hancleScrollIntoView();
+      imageRef.current.addEventListener("load", hancleScrollIntoView);
+
+      // return () => {
+      //   imageRef.current.removeEventlistener("load", hancleScrollIntoView);
+      // };
+    }
+  }, [history, imageRef]);
+
+  useEffect(() => {}, [imageRef]);
 
   if (!selectUserId) {
     return (
@@ -44,9 +59,10 @@ function Messages({ selectUserId, history, loadingHistory, userData }) {
           message={message}
           userData={userData}
           index={index}
+          imageRef={imageRef}
         />
       ))}
-      <div ref={triggerTest} />
+      <div ref={scrollTrigger} />
     </div>
   );
 }

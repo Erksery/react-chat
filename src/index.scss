@@ -18,6 +18,7 @@ a {
 }
 a:hover {
   color: var(--thematic-color);
+  cursor: pointer;
 }
 
 body {
@@ -65,9 +66,13 @@ input {
 
 input:focus {
   outline: none;
-  color: var(--color);
+  color: var(--sub-text-color);
   border-color: var(--thematic-color);
 }
+input::placeholder {
+  color: var(--sub-text-color);
+}
+
 p {
   margin: 0;
   color: var(--sub-text-color);
@@ -93,12 +98,12 @@ p {
 
 :root {
   --input-color: #252527;
-  --background-color: #1c2027;
-  --header-background-color: #383b43;
-  --element-background-color: #4c4f56;
+  --background-color: #172030;
+  --header-background-color: #333c4d;
+  --element-background-color: #3e495d;
   --color: #bfbfbf;
-  --button-hover-background-color: #595d64;
-  --sub-text-color: rgb(150, 150, 150);
+  --button-hover-background-color: #3e495d;
+  --sub-text-color: #aac7ff;
   --thematic-color: #4099ff;
   --hover-thematic-color: #2d6bb3;
   --sub-element-background-color: #33333367;

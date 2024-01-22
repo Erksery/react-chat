@@ -1,0 +1,84 @@
+.modalContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.491);
+  z-index: 9999;
+}
+
+.modal {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 1000px;
+  height: 600px;
+  width: 90%;
+  border-radius: 10px;
+  background-color: var(--header-background-color);
+  overflow: hidden;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  background-color: var(--background-color);
+}
+
+.modalImage {
+  width: 70%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.imagePanel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  width: 300px;
+}
+
+.title {
+  display: flex;
+}
+
+.imagePanel h2 {
+  font-weight: 500;
+  font-size: 20px;
+  word-break: break-all;
+}
+
+.imagePanel p {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 17px;
+}
+
+.imagePanel p span {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.173);
+}
+
+.closeModal {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.closeModal button {
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.closeModal button:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
