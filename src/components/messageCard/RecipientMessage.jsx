@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styles from "./MessageCard.module.scss";
 import { Link } from "react-router-dom";
 
@@ -20,8 +20,26 @@ function RecipientMessage({ message, formatingMessageDate, validateFile }) {
         }}
         className={styles.message}
       >
-        {validateFile(message.file)}
-        <span className={styles.messageText}>{message.text}</span>
+        <div
+          className={
+            message.file && message.file.length > 1
+              ? styles.imagesContainer
+              : styles.imageContainer
+          }
+        >
+          {message.file &&
+            message.file.map((file, index) => {
+              return <Fragment key={index}>{validateFile(file)}</Fragment>;
+            })}
+        </div>
+        {message.text && (
+          <div
+            style={{ justifyContent: "flex-start" }}
+            className={styles.textContainer}
+          >
+            <span className={styles.messageText}>{message.text}</span>
+          </div>
+        )}
       </div>
       <div className={styles.date}>{formatingMessageDate(message.date)}</div>
     </>

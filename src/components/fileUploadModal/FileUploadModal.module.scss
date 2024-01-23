@@ -1,0 +1,52 @@
+.secureFileContainer {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  padding: 5px 0;
+  top: -120px;
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  background-color: var(--element-background-color);
+}
+
+.filesContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px;
+}
+
+.clearSecure {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.secureFileImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+  padding: 10px;
+  border-radius: 12px;
+  border: solid 1px var(--sub-text-color);
+}
+
+.secureFileImage img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.imageData label {
+  display: -webkit-box;
+  width: 250px;
+  word-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}

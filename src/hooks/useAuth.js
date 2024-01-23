@@ -38,7 +38,7 @@ export const useAuth = () => {
       } finally {
         setLoading(false);
       }
-      return resData.data;
+      //return resData && resData.data;
     }
     getUserData();
   }, []);

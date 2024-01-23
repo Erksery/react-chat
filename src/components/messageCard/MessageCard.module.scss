@@ -11,6 +11,7 @@
   justify-content: flex-start;
   max-width: 300px;
   border-radius: 10px;
+  overflow: hidden;
   transition: 0.2s;
 }
 
@@ -59,10 +60,16 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  background-color: #1e1e1e2c;
 }
 
 .messageFile {
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
   color: white;
   border-radius: 10px;
   background-color: rgba(240, 248, 255, 0.177);
@@ -71,4 +78,24 @@
 .messageFile:hover {
   color: white;
   background-color: rgba(240, 248, 255, 0.336);
+}
+
+.imagesContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.imageContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.fileName {
+  display: -webkit-box;
+  width: 90%;
+  word-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

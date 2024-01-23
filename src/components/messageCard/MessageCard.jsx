@@ -4,6 +4,7 @@ import SenderMessage from "./SenderMessage";
 import RecipientMessage from "./RecipientMessage";
 import { Link } from "react-router-dom";
 import Image from "../image/Image";
+import { Icon28FolderFill } from "@vkontakte/icons";
 
 function MessageCard({ message, userData, imageRef }) {
   function formatingMessageDate(date) {
@@ -38,7 +39,17 @@ function MessageCard({ message, userData, imageRef }) {
             className={styles.messageFile}
             to={`http://localhost:5007/uploads/${file.fileName}`}
           >
-            {file.originalName}
+            <Icon28FolderFill />
+            <div>
+              <span className={styles.fileName}>{file.originalName}</span>
+
+              <p>
+                {(Math.ceil((+file.size / (1024 * 1024)) * 100) / 100).toFixed(
+                  2
+                )}
+                Мб
+              </p>
+            </div>
           </Link>
         );
       }

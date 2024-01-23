@@ -11,8 +11,6 @@ function ImageModal({ openImageModal, setOpenImageModal, file }) {
     closedContainer: { opacity: 0 },
   };
 
-  console.log(file);
-
   const handleDowload = (file) => {
     const link = document.createElement("a");
     link.href = `http://localhost:5007/uploads/`;
