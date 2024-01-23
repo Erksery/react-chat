@@ -18,7 +18,7 @@ function Messages({ selectUserId, history, loadingHistory, userData }) {
   };
 
   useEffect(() => {
-    //hancleScrollIntoView();
+    hancleScrollIntoView();
     if (imageRef.current) {
       hancleScrollIntoView();
       imageRef.current.addEventListener("load", hancleScrollIntoView);

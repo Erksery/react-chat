@@ -1,0 +1,25 @@
+.smileModalContainer {
+  position: absolute;
+  padding: 10px;
+  bottom: 60px;
+  right: 0;
+
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: var(--element-background-color);
+}
+
+.buttonSmile {
+  padding: 10px;
+  background-color: var(--element-background-color);
+}
+
+.buttonSmile:hover {
+  background-color: var(--button-hover-background-color);
+  cursor: pointer;
+}
+
+.smileContainer {
+  position: relative;
+}

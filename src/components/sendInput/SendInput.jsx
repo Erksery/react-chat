@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { Icon36Send, Icon28AttachOutline } from "@vkontakte/icons";
+import {
+  Icon36Send,
+  Icon28AttachOutline,
+  Icon28SmileOutline,
+} from "@vkontakte/icons";
 import styles from "./SendInput.module.scss";
 import { useWsConnection } from "../../hooks/useWsConnection";
 import axios from "axios";
 import { motion } from "framer-motion";
 import FileUploadModal from "../fileUploadModal/FileUploadModal";
+import SmileModal from "../smileModal/SmileModal";
 
 function SendInput({ userData, selectUserId, selectUserData }) {
   const [messageInputValue, setMessageInputValue] = useState("");
@@ -44,7 +49,7 @@ function SendInput({ userData, selectUserId, selectUserData }) {
       const resData = await axios.post("/api/fileUpload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      setSecureFile((prev) => [...prev, { ...resData.data.fileData }]);
+      setSecureFile(() => [...secureFile, { ...resData.data.fileData }]);
       setOpenFileContainer(true);
     } catch (err) {
       console.log("Error");
@@ -69,6 +74,9 @@ function SendInput({ userData, selectUserId, selectUserData }) {
         onChange={(e) => setMessageInputValue(e.target.value)}
         placeholder="Введите ваше сообщение..."
       />
+
+      <SmileModal />
+
       <motion.label
         whileTap={{ scale: 0.9 }}
         type="button"
@@ -78,6 +86,7 @@ function SendInput({ userData, selectUserId, selectUserData }) {
         <input type="file" hidden={true} />
         <Icon28AttachOutline width={28} height={28} />
       </motion.label>
+
       <motion.button whileTap={{ scale: 0.9 }}>
         <Icon36Send width={28} height={28} />
       </motion.button>
