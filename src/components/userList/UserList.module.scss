@@ -61,6 +61,12 @@
   background-color: var(--button-hover-background-color);
 }
 
+.userDataContainer {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
 .userName {
   display: -webkit-box;
   width: 70%;

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./UserList.module.scss";
 import Avatar from "../avatar/Avatar";
 import { useSelector } from "react-redux";
+import LastMessage from "../lastMessage/LastMessage";
 
 function UserList({
   selectUserId,
@@ -68,7 +69,17 @@ function UserList({
                   />
                 )}
 
-                <span className={styles.userName}>{user.loginUser}</span>
+                <div className={styles.userDataContainer}>
+                  <span className={styles.userName}>{user.loginUser}</span>
+
+                  <p>
+                    {user.lastMessageData ? (
+                      <LastMessage userData={userData} user={user} />
+                    ) : (
+                      ""
+                    )}
+                  </p>
+                </div>
               </div>
             );
           })

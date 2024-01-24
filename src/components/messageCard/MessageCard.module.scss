@@ -70,6 +70,7 @@
   align-items: center;
   gap: 10px;
   padding: 10px 20px;
+  width: 100%;
   color: white;
   border-radius: 10px;
   background-color: rgba(240, 248, 255, 0.177);
@@ -89,11 +90,16 @@
 .imageContainer {
   display: grid;
   grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.fileInfo {
+  width: 100%;
 }
 
 .fileName {
   display: -webkit-box;
-  width: 90%;
+  width: 40%;
   word-wrap: break-word;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;

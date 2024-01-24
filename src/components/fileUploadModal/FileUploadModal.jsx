@@ -1,7 +1,11 @@
 import React, { Fragment, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./FileUploadModal.module.scss";
-import { Icon28Dismiss, Icon28AddOutline } from "@vkontakte/icons";
+import {
+  Icon28Dismiss,
+  Icon28AddOutline,
+  Icon28FolderFill,
+} from "@vkontakte/icons";
 
 function FileUploadModal({
   openFileContainer,
@@ -15,7 +19,6 @@ function FileUploadModal({
 
   function validateFile(file) {
     if (file) {
-      //console.log(file);
       if (file.type === "image/jpeg" || file.type === "image/png") {
         return (
           <div className={styles.imageContainer}>
@@ -25,7 +28,12 @@ function FileUploadModal({
           </div>
         );
       } else {
-        return <div>{file.originalName}</div>;
+        return (
+          <div className={styles.fileContainer}>
+            <Icon28FolderFill />
+            <span>{file.originalName}</span>
+          </div>
+        );
       }
     }
   }
@@ -75,7 +83,7 @@ function FileUploadModal({
         whileTap={{ scale: 1, cursor: "pointer" }}
         transition={{ duration: 0.2 }}
         onClick={() => {
-          setSecureFile(null);
+          setSecureFile([]);
           setOpenFileContainer(false);
         }}
         onMouseEnter={() => setHoverSecureContainer(true)}

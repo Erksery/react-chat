@@ -22,7 +22,7 @@ function SendInput({ userData, selectUserId, selectUserData }) {
   const message = (e) => {
     e.preventDefault();
 
-    if (messageInputValue.length !== 0 || secureFile) {
+    if (messageInputValue.length !== 0 || secureFile.length !== 0) {
       ws.send(
         JSON.stringify({
           message: {
@@ -38,7 +38,7 @@ function SendInput({ userData, selectUserId, selectUserData }) {
     }
 
     setMessageInputValue("");
-    setSecureFile(null);
+    setSecureFile([]);
     setOpenFileContainer(false);
   };
 

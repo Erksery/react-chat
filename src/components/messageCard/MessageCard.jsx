@@ -40,7 +40,7 @@ function MessageCard({ message, userData, imageRef }) {
             to={`http://localhost:5007/uploads/${file.fileName}`}
           >
             <Icon28FolderFill />
-            <div>
+            <div className={styles.fileInfo}>
               <span className={styles.fileName}>{file.originalName}</span>
 
               <p>

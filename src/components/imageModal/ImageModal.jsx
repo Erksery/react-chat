@@ -11,13 +11,6 @@ function ImageModal({ openImageModal, setOpenImageModal, file }) {
     closedContainer: { opacity: 0 },
   };
 
-  const handleDowload = (file) => {
-    const link = document.createElement("a");
-    link.href = `http://localhost:5007/uploads/`;
-    link.download = `${file.fileName}`;
-    // link.click();
-  };
-
   return (
     <AnimatePresence>
       {openImageModal && (
@@ -67,7 +60,12 @@ function ImageModal({ openImageModal, setOpenImageModal, file }) {
               <p>
                 Тип: <span className={styles.emphasized}>{file.type}</span>{" "}
               </p>
-              <button onClick={handleDowload(file)}>Скачать</button>
+              <a
+                href="http://localhost:5007/uploads/1706087119876.716864025.jpg"
+                download
+              >
+                Скачать
+              </a>
             </div>
           </motion.div>
         </motion.div>
