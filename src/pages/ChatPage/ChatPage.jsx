@@ -16,6 +16,7 @@ function ChatPage() {
   const [usersList, setUsersList] = useState([]);
   const [selectUserId, setSelectUserId] = useState(null);
   const [selectUserData, setSelectUserData] = useState({});
+  const [lastMessage, setLastMessage] = useState({});
 
   const dispatch = useDispatch();
   const online = useSelector((state) => state.onlineUsersStore);
@@ -39,6 +40,7 @@ function ChatPage() {
 
         if (recipient === selectUserId || sender === selectUserId) {
           setHistory((prev) => [...prev, { ...data.message }]);
+          setLastMessage({ ...data.message });
         }
       }
     };
@@ -63,6 +65,7 @@ function ChatPage() {
     <BodyContainer>
       <div className={styles.chatContainer}>
         <UserList
+          lastMessage={lastMessage}
           selectUserId={selectUserId}
           setSelectUserId={setSelectUserId}
           usersList={usersList}

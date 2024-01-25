@@ -11,6 +11,7 @@ function UserList({
   usersList,
   setUsersList,
   userData,
+  lastMessage,
 }) {
   const [searchValue, setSearchValue] = useState("");
   const [searchLoading, setSearchLoading] = useState(true);
@@ -22,7 +23,7 @@ function UserList({
       getSearchUsers();
     }, 300);
     return () => clearTimeout(delay);
-  }, [searchValue]);
+  }, [searchValue, lastMessage]);
 
   async function getSearchUsers() {
     const resData = await axios.get("/api/searchUser", {
@@ -55,7 +56,7 @@ function UserList({
               <div
                 onClick={() => setSelectUserId(user._id)}
                 style={{
-                  backgroundColor: user._id === selectUserId ? "#333c4d" : "",
+                  backgroundColor: user._id === selectUserId ? "#4099ffa5" : "",
                 }}
                 key={user._id}
                 className={styles.userCard}
@@ -70,11 +71,17 @@ function UserList({
                 )}
 
                 <div className={styles.userDataContainer}>
-                  <span className={styles.userName}>{user.loginUser}</span>
+                  <span className={styles.userName} translate="no">
+                    {user.loginUser}
+                  </span>
 
                   <p>
                     {user.lastMessageData ? (
-                      <LastMessage userData={userData} user={user} />
+                      <LastMessage
+                        userData={userData}
+                        user={user}
+                        lastMessage={lastMessage}
+                      />
                     ) : (
                       ""
                     )}

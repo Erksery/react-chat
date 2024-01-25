@@ -28,7 +28,9 @@ function SenderMessage({ message, formatingMessageDate, validateFile }) {
 
         {message.text && (
           <div className={styles.textContainer}>
-            <span className={styles.messageText}>{message.text}</span>
+            <span className={styles.messageText} translate="no">
+              {message.text}
+            </span>
           </div>
         )}
       </div>

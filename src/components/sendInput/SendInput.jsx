@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  Icon36Send,
-  Icon28AttachOutline,
-  Icon28SmileOutline,
-} from "@vkontakte/icons";
+import { Icon36Send, Icon28AttachOutline } from "@vkontakte/icons";
 import styles from "./SendInput.module.scss";
 import { useWsConnection } from "../../hooks/useWsConnection";
 import axios from "axios";
@@ -75,7 +71,7 @@ function SendInput({ userData, selectUserId, selectUserData }) {
         placeholder="Введите ваше сообщение..."
       />
 
-      <SmileModal />
+      <SmileModal setMessageInputValue={setMessageInputValue} />
 
       <motion.label
         whileTap={{ scale: 0.9 }}

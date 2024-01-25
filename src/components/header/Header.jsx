@@ -13,7 +13,7 @@ function Header() {
     <div className={styles.header}>
       <div className={styles.container}>
         <div className={styles.logoContainer}>
-          <h2>ReactChat</h2>
+          <h2 translate="no">ReactChat</h2>
         </div>
         <div className={styles.tabBarContainer}>
           {userData.userId ? (

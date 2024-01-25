@@ -5,7 +5,11 @@ function Avatar({ id, login, color, onlineUsers }) {
   return (
     <>
       {id && (
-        <div style={{ backgroundColor: color }} className={styles.avatar}>
+        <div
+          style={{ backgroundColor: color }}
+          className={styles.avatar}
+          translate="no"
+        >
           {login && login[0]}
           {onlineUsers && (
             <div

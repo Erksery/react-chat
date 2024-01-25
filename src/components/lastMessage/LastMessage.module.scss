@@ -1,0 +1,13 @@
+.lastMessageContainer {
+  display: flex;
+  gap: 5px;
+}
+
+.lastMessage {
+  display: -webkit-box;
+  width: 80%;
+  word-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

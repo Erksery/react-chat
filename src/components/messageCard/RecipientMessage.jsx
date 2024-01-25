@@ -37,7 +37,9 @@ function RecipientMessage({ message, formatingMessageDate, validateFile }) {
             style={{ justifyContent: "flex-start" }}
             className={styles.textContainer}
           >
-            <span className={styles.messageText}>{message.text}</span>
+            <span className={styles.messageText} translate="no">
+              {message.text}
+            </span>
           </div>
         )}
       </div>
