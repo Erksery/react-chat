@@ -51,6 +51,8 @@ function Messages({ selectUserId, history, loadingHistory, userData }) {
     );
   }
 
+  console.log("Rerender");
+
   return (
     <div ref={messageContainer} className={styles.messages}>
       {history.map((message, index) => (

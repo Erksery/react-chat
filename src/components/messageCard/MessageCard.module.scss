@@ -70,7 +70,6 @@
   align-items: center;
   gap: 10px;
   padding: 10px 20px;
-  width: 100%;
   color: white;
   border-radius: 10px;
   background-color: rgba(240, 248, 255, 0.177);
@@ -99,7 +98,7 @@
 
 .fileName {
   display: -webkit-box;
-  width: 40%;
+  width: 100px;
   word-wrap: break-word;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
