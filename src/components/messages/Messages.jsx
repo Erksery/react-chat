@@ -3,7 +3,14 @@ import styles from "./Messages.module.scss";
 
 import MessageCard from "../messageCard/MessageCard";
 
-function Messages({ selectUserId, history, loadingHistory, userData }) {
+function Messages({
+  selectUserId,
+  history,
+  loadingHistory,
+  userData,
+  selectMessages,
+  setSelectMessages,
+}) {
   const messageContainer = useRef();
   const scrollTrigger = useRef();
   const imageRef = useRef();
@@ -57,6 +64,8 @@ function Messages({ selectUserId, history, loadingHistory, userData }) {
     <div ref={messageContainer} className={styles.messages}>
       {history.map((message, index) => (
         <MessageCard
+          selectMessages={selectMessages}
+          setSelectMessages={setSelectMessages}
           key={message._id ?? index}
           message={message}
           userData={userData}

@@ -1,0 +1,28 @@
+.selectUser {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.selectUserInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.editContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.editButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 35px;
+  height: 35px;
+  background-color: var(--element-background-color);
+}

@@ -21,11 +21,17 @@ function FileUploadModal({
     if (file) {
       if (file.type === "image/jpeg" || file.type === "image/png") {
         return (
-          <div className={styles.imageContainer}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.7 }}
+            transition={{ duration: 0.3 }}
+            className={styles.imageContainer}
+          >
             <div className={styles.secureFileImage}>
               <img src={`http://localhost:5007/uploads/${file.fileName}`} />
             </div>
-          </div>
+          </motion.div>
         );
       } else {
         return (
@@ -43,8 +49,8 @@ function FileUploadModal({
       initial={false}
       animate={openFileContainer ? "openContainer" : "closedContainer"}
       variants={{
-        openContainer: { scale: 1, opacity: 1, visibility: "visible" },
-        closedContainer: { scale: 0.7, opacity: 0, visibility: "hidden" },
+        openContainer: { scale: 1, opacity: 1, pointerEvents: "auto" },
+        closedContainer: { scale: 0.7, opacity: 0, pointerEvents: "none" },
       }}
       transition={{ duration: 0.2 }}
       onMouseEnter={() => setHoverSecureContainer(true)}
@@ -59,14 +65,16 @@ function FileUploadModal({
           ))}
 
         <div className={styles.imageContainer}>
-          <label
+          <motion.label
+            whileHover={{ scale: 0.9, cursor: "pointer" }}
+            whileTap={{ scale: 0.9, cursor: "pointer" }}
             type="button"
             className={styles.secureFileImage}
             onChange={sendFile}
           >
             <Icon28AddOutline />
             <input type="file" hidden={true} />
-          </label>
+          </motion.label>
         </div>
       </div>
 

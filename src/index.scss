@@ -78,6 +78,10 @@ p {
   color: var(--sub-text-color);
 }
 
+label:focus {
+  outline: none;
+}
+
 ::-webkit-scrollbar {
   width: 9px;
   height: 0px;

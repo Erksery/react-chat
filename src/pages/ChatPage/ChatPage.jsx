@@ -11,12 +11,14 @@ import { useWsConnection } from "../../hooks/useWsConnection";
 import { useDispatch, useSelector } from "react-redux";
 import { setMessagesLimit } from "../../store/limitMessagesSlice";
 import Avatar from "../../components/avatar/Avatar";
+import ChatHeader from "../../components/chatHeader/ChatHeader";
 
 function ChatPage() {
   const [usersList, setUsersList] = useState([]);
   const [selectUserId, setSelectUserId] = useState(null);
   const [selectUserData, setSelectUserData] = useState({});
   const [lastMessage, setLastMessage] = useState({});
+  const [selectMessages, setSelectMessages] = useState([]);
 
   const dispatch = useDispatch();
   const online = useSelector((state) => state.onlineUsersStore);
@@ -74,19 +76,16 @@ function ChatPage() {
         />
         <div className={styles.chat}>
           <div
-            onClick={() => dispatch(setMessagesLimit())}
+            //onClick={() => dispatch(setMessagesLimit())}
             className={styles.chatHeader}
           >
             {selectUserId && userData && (
-              <div className={styles.selectUser}>
-                <Avatar
-                  id={selectUserData._id}
-                  login={selectUserData.loginUser}
-                  color={selectUserData.avatarColor}
-                  onlineUsers={online.onlineUsers}
-                />
-                <p>{selectUserData.loginUser}</p>
-              </div>
+              <ChatHeader
+                userData={userData}
+                selectMessages={selectMessages}
+                selectUserData={selectUserData}
+                online={online}
+              />
             )}
             <p>{loadingHistory && "Обновление..."}</p>
           </div>
@@ -94,6 +93,8 @@ function ChatPage() {
           {!!selectUserId ? (
             <>
               <Messages
+                selectMessages={selectMessages}
+                setSelectMessages={setSelectMessages}
                 history={history}
                 loadingHistory={loadingHistory}
                 selectUserId={selectUserId}

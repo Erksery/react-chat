@@ -11,7 +11,9 @@ function LastMessage({ userData, user, lastMessage }) {
               ? "Вы: "
               : `${user.loginUser}: `}
           </span>
-          <span className={styles.lastMessage}>{lastMessage.text}</span>
+          <span className={styles.lastMessage}>
+            {lastMessage.text ? lastMessage.text : "Файл"}
+          </span>
         </div>
       );
     }
@@ -24,7 +26,9 @@ function LastMessage({ userData, user, lastMessage }) {
           ? "Вы: "
           : `${user.loginUser}: `}
       </span>
-      <span className={styles.lastMessage}>{user.lastMessageData.text}</span>
+      <span className={styles.lastMessage}>
+        {user.lastMessageData.text ? user.lastMessageData.text : "Файл"}
+      </span>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./MessageCard.module.scss";
 import SenderMessage from "./SenderMessage";
 import RecipientMessage from "./RecipientMessage";
@@ -6,7 +6,14 @@ import { Link } from "react-router-dom";
 import Image from "../image/Image";
 import { Icon28FolderFill } from "@vkontakte/icons";
 
-function MessageCard({ message, userData, imageRef }) {
+function MessageCard({
+  message,
+  userData,
+  imageRef,
+  selectMessages,
+  setSelectMessages,
+}) {
+  const [mouseDown, setMouseDown] = useState(false);
   function formatingMessageDate(date) {
     if (date) {
       return checkDate(date);
@@ -58,7 +65,20 @@ function MessageCard({ message, userData, imageRef }) {
 
   return (
     <div
+      onDoubleClick={
+        selectMessages.length >= 0 &&
+        (() => setSelectMessages((prev) => [...prev, message._id]))
+      }
+      onClick={() =>
+        setSelectMessages(() =>
+          selectMessages.filter((item) => item !== message._id)
+        )
+      }
       style={{
+        backgroundColor:
+          selectMessages && selectMessages.includes(message._id)
+            ? "rgba(64, 153, 255, 0.647)"
+            : "#333c4d",
         justifyContent:
           userData.userId === message.sender ? "flex-end" : "flex-start",
       }}
