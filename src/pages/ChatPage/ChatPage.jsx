@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMessagesLimit } from "../../store/limitMessagesSlice";
 import Avatar from "../../components/avatar/Avatar";
 import ChatHeader from "../../components/chatHeader/ChatHeader";
+import axios from "axios";
 
 function ChatPage() {
   const [usersList, setUsersList] = useState([]);
@@ -49,6 +50,10 @@ function ChatPage() {
 
     selectUserId &&
       setSelectUserData(usersList.find((item) => item._id === selectUserId));
+
+      if(window.location){
+        console.log(window.location)
+      }
   }, [selectUserId]);
 
   if (!userData.userLogin && !loading) {
@@ -63,6 +68,17 @@ function ChatPage() {
     );
   }
 
+  const handleDeleteMessage = () => {
+    axios.post("/api/deleteMessages", {
+      messagesArray: selectMessages,
+      userData: userData,
+    });
+    selectMessages.map((message) => {
+      setHistory(history.filter(mes => mes._id !== message))
+    })
+
+  };
+
   return (
     <BodyContainer>
       <div className={styles.chatContainer}>
@@ -73,6 +89,7 @@ function ChatPage() {
           usersList={usersList}
           setUsersList={setUsersList}
           userData={userData}
+
         />
         <div className={styles.chat}>
           <div
@@ -81,6 +98,7 @@ function ChatPage() {
           >
             {selectUserId && userData && (
               <ChatHeader
+              handleDeleteMessage={handleDeleteMessage}
                 userData={userData}
                 selectMessages={selectMessages}
                 selectUserData={selectUserData}

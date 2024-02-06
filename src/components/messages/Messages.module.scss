@@ -54,3 +54,13 @@
   border-radius: 100%;
   background-color: gray;
 }
+
+.moreLimit{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moreLimit button{
+  background-color: var(--element-background-color);
+}

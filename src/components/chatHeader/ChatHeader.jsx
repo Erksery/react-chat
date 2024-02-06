@@ -4,13 +4,8 @@ import styles from "./ChatHeader.module.scss";
 import { Icon28DeleteOutlineAndroid } from "@vkontakte/icons";
 import axios from "axios";
 
-function ChatHeader({ selectUserData, online, selectMessages, userData }) {
-  const handleDeleteMessage = () => {
-    axios.post("/api/deleteMessages", {
-      messagesArray: selectMessages,
-      userData: userData,
-    });
-  };
+function ChatHeader({ selectUserData, online, selectMessages, userData, handleDeleteMessage }) {
+
 
   return (
     <div className={styles.selectUser}>

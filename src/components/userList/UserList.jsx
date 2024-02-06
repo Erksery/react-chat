@@ -12,6 +12,7 @@ function UserList({
   setUsersList,
   userData,
   lastMessage,
+
 }) {
   const [searchValue, setSearchValue] = useState("");
   const [searchLoading, setSearchLoading] = useState(true);
@@ -54,7 +55,7 @@ function UserList({
           usersList.map((user) => {
             return (
               <div
-                onClick={() => setSelectUserId(user._id)}
+                onClick={() =>{ setSelectUserId(user._id)}}
                 style={{
                   backgroundColor: user._id === selectUserId ? "#4099ffa5" : "",
                 }}

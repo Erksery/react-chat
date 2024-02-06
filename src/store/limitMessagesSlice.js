@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  messagesLimit: 50,
+  messagesLimit: 100,
 };
 
 export const limitMessagesSlice = createSlice({
@@ -9,7 +9,7 @@ export const limitMessagesSlice = createSlice({
   initialState,
   reducers: {
     setMessagesLimit: (state, action) => {
-      state.messagesLimit += 50;
+      state.messagesLimit += 100;
     },
   },
 });

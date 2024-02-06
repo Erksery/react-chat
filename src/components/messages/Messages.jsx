@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./Messages.module.scss";
 
 import MessageCard from "../messageCard/MessageCard";
+import { useDispatch } from "react-redux";
+import { setMessagesLimit } from "../../store/limitMessagesSlice";
 
 function Messages({
   selectUserId,
@@ -14,6 +16,8 @@ function Messages({
   const messageContainer = useRef();
   const scrollTrigger = useRef();
   const imageRef = useRef();
+
+  const dispatch = useDispatch()
 
   const hancleScrollIntoView = () => {
     if (scrollTrigger.current) {
@@ -62,6 +66,9 @@ function Messages({
 
   return (
     <div ref={messageContainer} className={styles.messages}>
+      <div className={styles.moreLimit}>
+        <button onClick={() => dispatch(setMessagesLimit()) }>Загрузить больше</button>
+      </div>
       {history.map((message, index) => (
         <MessageCard
           selectMessages={selectMessages}

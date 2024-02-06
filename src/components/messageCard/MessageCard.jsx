@@ -13,7 +13,6 @@ function MessageCard({
   selectMessages,
   setSelectMessages,
 }) {
-  const [mouseDown, setMouseDown] = useState(false);
   function formatingMessageDate(date) {
     if (date) {
       return checkDate(date);
