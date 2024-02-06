@@ -12,7 +12,7 @@ export default function Allert() {
   const allertRef = useRef(null);
 
   useEffect(() => {
-    if (allert) {
+    if (allert && allert.allertText) {
       allert.allertText.length > 0 && setAllertModal(true);
       const delay = setTimeout(() => {
         setAllertModal(false);

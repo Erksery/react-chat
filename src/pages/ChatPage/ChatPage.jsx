@@ -27,7 +27,7 @@ function ChatPage() {
   const { history, setHistory, loadingHistory } = useHistory({
     selectUserId,
   });
-  const { ws } = useWsConnection();
+  const { ws, wsError } = useWsConnection();
 
   useEffect(() => {
     ws.onopen = () => {
@@ -55,7 +55,7 @@ function ChatPage() {
     return <Error />;
   }
 
-  if (errorAuth) {
+  if (wsError) {
     return (
       <div>
         <h1>{errorAuth}</h1>
