@@ -9,8 +9,6 @@ import SendInput from "../../components/sendInput/SendInput";
 import UserList from "../../components/userList/UserList";
 import { useWsConnection } from "../../hooks/useWsConnection";
 import { useDispatch, useSelector } from "react-redux";
-import { setMessagesLimit } from "../../store/limitMessagesSlice";
-import Avatar from "../../components/avatar/Avatar";
 import ChatHeader from "../../components/chatHeader/ChatHeader";
 import axios from "axios";
 
@@ -51,9 +49,9 @@ function ChatPage() {
     selectUserId &&
       setSelectUserData(usersList.find((item) => item._id === selectUserId));
 
-      if(window.location){
-        console.log(window.location)
-      }
+    if (window.location) {
+      console.log(window.location);
+    }
   }, [selectUserId]);
 
   if (!userData.userLogin && !loading) {
@@ -74,9 +72,8 @@ function ChatPage() {
       userData: userData,
     });
     selectMessages.map((message) => {
-      setHistory(history.filter(mes => mes._id !== message))
-    })
-
+      setHistory(history.filter((mes) => mes._id !== message));
+    });
   };
 
   return (
@@ -89,7 +86,6 @@ function ChatPage() {
           usersList={usersList}
           setUsersList={setUsersList}
           userData={userData}
-
         />
         <div className={styles.chat}>
           <div
@@ -98,7 +94,7 @@ function ChatPage() {
           >
             {selectUserId && userData && (
               <ChatHeader
-              handleDeleteMessage={handleDeleteMessage}
+                handleDeleteMessage={handleDeleteMessage}
                 userData={userData}
                 selectMessages={selectMessages}
                 selectUserData={selectUserData}
